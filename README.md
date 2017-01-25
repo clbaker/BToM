@@ -6,5 +6,5 @@ Chris L. Baker, Julian Jara-Ettinger, Rebecca Saxe, & Joshua B. Tenenbaum
 Nature Human Behavior, 2017
 
 
-BeliefDesireInference: Experiment 1 code and analysis.
+BeliefDesireInference: Experiment 1 code and analysis.  
 WhatIsWhere: Experiment 2 code and analysis.
