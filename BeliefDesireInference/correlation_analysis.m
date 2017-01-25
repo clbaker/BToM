@@ -11,12 +11,27 @@ people=load('data/human_data.mat');
 excl=[11 12 22 71 72];
 %excl=[];
 incl=setdiff(1:78,excl);
-imap(incl) = 1:length(incl);
+n_incl = length(incl);
+imap(incl) = 1:n_incl;
 
 % beta=2.5
-btom.beta_ind = 5;
-truebelief.beta_ind = 18;
-nocost.beta_ind = 5;
+[val,btom.beta_ind] = ...
+    max(fc(reshape(btom.belief_model(:,incl,:),[3*n_incl,20]), ...
+           m2v(people.bel_inf_mean_norm(:,incl))) ...
+        + fc(reshape(btom.desire_model(:,incl,:),[3*n_incl,20]), ...
+             m2v(people.des_inf_mean(:,incl))));
+
+[val,truebelief.beta_ind] = ...
+    max(fc(reshape(truebelief.belief_model(:,incl,:),[3*n_incl,20]), ...
+           m2v(people.bel_inf_mean_norm(:,incl))) ...
+        + fc(reshape(truebelief.desire_model(:,incl,:),[3*n_incl,20]), ...
+             m2v(people.des_inf_mean(:,incl))));
+
+[val,nocost.beta_ind] = ...
+    max(fc(reshape(nocost.belief_model(:,incl,:),[3*n_incl,20]), ...
+           m2v(people.bel_inf_mean_norm(:,incl))) ...
+        + fc(reshape(nocost.desire_model(:,incl,:),[3*n_incl,20]), ...
+             m2v(people.des_inf_mean(:,incl))));
 
 
 % Display individual and group correlations for each model
@@ -25,22 +40,22 @@ btom.r_belief = corr(m2v(btom.belief_model(:,incl,btom.beta_ind)),m2v(people.bel
 btom.r_desire = corr(m2v(btom.desire_model(:,incl,btom.beta_ind)),m2v(people.des_inf_mean(:,incl)));
 btom.r_belief_g = corr(m2v(btom.belief_model_group(:,:,btom.beta_ind)),m2v(people.bel_inf_group_mean(:)));
 btom.r_desire_g = corr(m2v(btom.desire_model_group(:,:,btom.beta_ind)),m2v(people.des_inf_group_mean(:)));
-fprintf('BToM:\n\tr_belief: %1.2f\n\tr_desire: %1.2f\n\tr_belief_group: %1.2f\n\tr_desire_group: %1.2f\n', ...
-  btom.r_belief,btom.r_desire,btom.r_belief_g,btom.r_desire_g);
+fprintf('BToM(beta=%1.1f):\n\tr_belief: %1.2f\n\tr_desire: %1.2f\n\tr_belief_group: %1.2f\n\tr_desire_group: %1.2f\n', ...
+  btom.beta_score_values(btom.beta_ind),btom.r_belief,btom.r_desire,btom.r_belief_g,btom.r_desire_g);
 
 truebelief.r_belief = corr(m2v(truebelief.belief_model(:,incl,truebelief.beta_ind)),m2v(people.bel_inf_mean_norm(:,incl)));
 truebelief.r_desire = corr(m2v(truebelief.desire_model(:,incl,truebelief.beta_ind)),m2v(people.des_inf_mean(:,incl)));
 truebelief.r_belief_g = corr(m2v(truebelief.belief_model_group(:,:,truebelief.beta_ind)),m2v(people.bel_inf_group_mean(:)));
 truebelief.r_desire_g = corr(m2v(truebelief.desire_model_group(:,:,truebelief.beta_ind)),m2v(people.des_inf_group_mean(:)));
-fprintf('TrueBelief:\n\tr_belief: %1.3f\n\tr_desire: %1.2f\n\tr_belief_group: %1.3f\n\tr_desire_group: %1.2f\n', ...
-  truebelief.r_belief,truebelief.r_desire,truebelief.r_belief_g,truebelief.r_desire_g);
+fprintf('TrueBelief(beta=%1.1f):\n\tr_belief: %1.3f\n\tr_desire: %1.2f\n\tr_belief_group: %1.3f\n\tr_desire_group: %1.2f\n', ...
+  truebelief.beta_score_values(truebelief.beta_ind),truebelief.r_belief,truebelief.r_desire,truebelief.r_belief_g,truebelief.r_desire_g);
 
 nocost.r_belief = corr(m2v(nocost.belief_model(:,incl,nocost.beta_ind)),m2v(people.bel_inf_mean_norm(:,incl)));
 nocost.r_desire = corr(m2v(nocost.desire_model(:,incl,nocost.beta_ind)),m2v(people.des_inf_mean(:,incl)));
 nocost.r_belief_g = corr(m2v(nocost.belief_model_group(:,:,nocost.beta_ind)),m2v(people.bel_inf_group_mean(:)));
 nocost.r_desire_g = corr(m2v(nocost.desire_model_group(:,:,nocost.beta_ind)),m2v(people.des_inf_group_mean(:)));
-fprintf('NoCost:\n\tr_belief: %1.2f\n\tr_desire: %1.2f\n\tr_belief_group: %1.2f\n\tr_desire_group: %1.2f\n', ...
-  nocost.r_belief,nocost.r_desire,nocost.r_belief_g,nocost.r_desire_g);
+fprintf('NoCost(beta=%1.1f):\n\tr_belief: %1.2f\n\tr_desire: %1.2f\n\tr_belief_group: %1.2f\n\tr_desire_group: %1.2f\n', ...
+  nocost.beta_score_values(nocost.beta_ind),nocost.r_belief,nocost.r_desire,nocost.r_belief_g,nocost.r_desire_g);
 
 motionheuristic.r_belief = corr(m2v(motionheuristic.belief_model(:,incl)),m2v(people.bel_inf_mean_norm(:,incl)));
 motionheuristic.r_desire = corr(m2v(motionheuristic.desire_model(:,incl)),m2v(people.des_inf_mean(:,incl)));
