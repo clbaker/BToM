@@ -67,6 +67,7 @@ nocost = load('data/nocost_bscv.mat');
 truebelief = load('data/truebelief_bscv.mat');
 motionheuristic = load('data/motionheuristic_bscv.mat');
 
+n_folds = length(btom.belief_bscv);
 pctiles = round([0.025 0.5 0.975]*n_folds);
 
 btom.belief_bscv_sort = sort(btom.belief_bscv);
@@ -74,14 +75,14 @@ btom.desire_bscv_sort = sort(btom.desire_bscv);
 btom.belief_group_bscv_sort = sort(btom.belief_group_bscv);
 btom.desire_group_bscv_sort = sort(btom.desire_group_bscv);
 
-fprintf('BTOM BELIEF 2.5, 50, 97.5 %%iles-----------------------------\n');
-btom.belief_bscv_sort(pctiles)'
-fprintf('BTOM DESIRE 2.5, 50, 97.5 %%iles-----------------------------\n');
-btom.desire_bscv_sort(pctiles)'
-fprintf('BTOM BELIEF GROUP 2.5, 50, 97.5 %%iles-----------------------\n');
-btom.belief_group_bscv_sort(pctiles)'
-fprintf('BTOM DESIRE GROUP 2.5, 50, 97.5 %%iles-----------------------\n');
-btom.desire_group_bscv_sort(pctiles)'
+fprintf('r BTOM BELIEF 50 (2.5, 97.5) %%iles: %1.2f (%1.2f, %1.2f)\n', ...
+  btom.belief_bscv_sort(pctiles(2)),btom.belief_bscv_sort(pctiles(1)),btom.belief_bscv_sort(pctiles(3)));
+fprintf('r BTOM DESIRE 50 (2.5, 97.5) %%iles %1.2f (%1.2f, %1.2f)\n', ...
+  btom.desire_bscv_sort(pctiles(2)),btom.desire_bscv_sort(pctiles(1)),btom.desire_bscv_sort(pctiles(3)));
+fprintf('r BTOM BELIEF GROUP 50 (2.5, 97.5) %%iles %1.2f (%1.2f, %1.2f)\n', ...
+  btom.belief_group_bscv_sort(pctiles(2)),btom.belief_group_bscv_sort(pctiles(1)),btom.belief_group_bscv_sort(pctiles(3)));
+fprintf('r BTOM DESIRE GROUP 50 (2.5, 97.5) %%iles %1.2f (%1.2f, %1.2f)\n', ...
+  btom.desire_group_bscv_sort(pctiles(2)),btom.desire_group_bscv_sort(pctiles(1)),btom.desire_group_bscv_sort(pctiles(3)));
 
 
 truebelief.belief_bscv_sort = sort(truebelief.belief_bscv);
@@ -89,14 +90,14 @@ truebelief.desire_bscv_sort = sort(truebelief.desire_bscv);
 truebelief.belief_group_bscv_sort = sort(truebelief.belief_group_bscv);
 truebelief.desire_group_bscv_sort = sort(truebelief.desire_group_bscv);
 
-fprintf('TRUEBELIEF BELIEF 2.5, 50, 97.5 %%iles-----------------------\n');
-truebelief.belief_bscv_sort(pctiles)'
-fprintf('TRUEBELIEF DESIRE 2.5, 50, 97.5 %%iles-----------------------\n');
-truebelief.desire_bscv_sort(pctiles)'
-fprintf('TRUEBELIEF BELIEF GROUP 2.5, 50, 97.5 %%iles-----------------\n');
-truebelief.belief_group_bscv_sort(pctiles)'
-fprintf('TRUEBELIEF DESIRE GROUP 2.5, 50, 97.5 %%iles-----------------\n');
-truebelief.desire_group_bscv_sort(pctiles)'
+fprintf('r TRUEBELIEF BELIEF 50 (2.5, 97.5) %%iles: %1.3f (%1.2f, %1.2f)\n', ...
+  truebelief.belief_bscv_sort(pctiles(2)),truebelief.belief_bscv_sort(pctiles(1)),truebelief.belief_bscv_sort(pctiles(3)));
+fprintf('r TRUEBELIEF DESIRE 50 (2.5, 97.5) %%iles %1.2f (%1.2f, %1.2f)\n', ...
+  truebelief.desire_bscv_sort(pctiles(2)),truebelief.desire_bscv_sort(pctiles(1)),truebelief.desire_bscv_sort(pctiles(3)));
+fprintf('r TRUEBELIEF BELIEF GROUP 50 (2.5, 97.5) %%iles %1.3f (%1.2f, %1.2f)\n', ...
+  truebelief.belief_group_bscv_sort(pctiles(2)),truebelief.belief_group_bscv_sort(pctiles(1)),truebelief.belief_group_bscv_sort(pctiles(3)));
+fprintf('r TRUEBELIEF DESIRE GROUP 50 (2.5, 97.5) %%iles %1.2f (%1.2f, %1.2f)\n', ...
+  truebelief.desire_group_bscv_sort(pctiles(2)),truebelief.desire_group_bscv_sort(pctiles(1)),truebelief.desire_group_bscv_sort(pctiles(3)));
 
 
 nocost.belief_bscv_sort = sort(nocost.belief_bscv);
@@ -104,14 +105,14 @@ nocost.desire_bscv_sort = sort(nocost.desire_bscv);
 nocost.belief_group_bscv_sort = sort(nocost.belief_group_bscv);
 nocost.desire_group_bscv_sort = sort(nocost.desire_group_bscv);
 
-fprintf('NOCOST BELIEF 2.5, 50, 97.5 %%iles---------------------------\n');
-nocost.belief_bscv_sort(pctiles)'
-fprintf('NOCOST DESIRE 2.5, 50, 97.5 %%iles---------------------------\n');
-nocost.desire_bscv_sort(pctiles)'
-fprintf('NOCOST BELIEF GROUP 2.5, 50, 97.5 %%iles---------------------\n');
-nocost.belief_group_bscv_sort(pctiles)'
-fprintf('NOCOST DESIRE GROUP 2.5, 50, 97.5 %%iles---------------------\n');
-nocost.desire_group_bscv_sort(pctiles)'
+fprintf('r NOCOST BELIEF 50 (2.5, 97.5) %%iles: %1.2f (%1.3f, %1.2f)\n', ...
+  nocost.belief_bscv_sort(pctiles(2)),nocost.belief_bscv_sort(pctiles(1)),nocost.belief_bscv_sort(pctiles(3)));
+fprintf('r NOCOST DESIRE 50 (2.5, 97.5) %%iles %1.2f (%1.2f, %1.2f)\n', ...
+  nocost.desire_bscv_sort(pctiles(2)),nocost.desire_bscv_sort(pctiles(1)),nocost.desire_bscv_sort(pctiles(3)));
+fprintf('r NOCOST BELIEF GROUP 50 (2.5, 97.5) %%iles %1.2f (%1.3f, %1.2f)\n', ...
+  nocost.belief_group_bscv_sort(pctiles(2)),nocost.belief_group_bscv_sort(pctiles(1)),nocost.belief_group_bscv_sort(pctiles(3)));
+fprintf('r NOCOST DESIRE GROUP 50 (2.5, 97.5) %%iles %1.2f (%1.2f, %1.2f)\n', ...
+  nocost.desire_group_bscv_sort(pctiles(2)),nocost.desire_group_bscv_sort(pctiles(1)),nocost.desire_group_bscv_sort(pctiles(3)));
 
 
 motionheuristic.belief_bscv_sort = sort(motionheuristic.belief_bscv);
@@ -119,31 +120,31 @@ motionheuristic.desire_bscv_sort = sort(motionheuristic.desire_bscv);
 motionheuristic.belief_group_bscv_sort = sort(motionheuristic.belief_group_bscv);
 motionheuristic.desire_group_bscv_sort = sort(motionheuristic.desire_group_bscv);
 
-fprintf('MOTIONHEURISTIC BELIEF 2.5, 50, 97.5 %%iles------------------\n');
-motionheuristic.belief_bscv_sort(pctiles)'
-fprintf('MOTIONHEURISTIC DESIRE 2.5, 50, 97.5 %%iles------------------\n');
-motionheuristic.desire_bscv_sort(pctiles)'
-fprintf('MOTIONHEURISTIC BELIEF GROUP 2.5, 50, 97.5 %%iles------------\n');
-motionheuristic.belief_group_bscv_sort(pctiles)'
-fprintf('MOTIONHEURISTIC DESIRE GROUP 2.5, 50, 97.5 %%iles------------\n');
-motionheuristic.desire_group_bscv_sort(pctiles)'
+fprintf('r MOTIONHEURISTIC BELIEF 50 (2.5, 97.5) %%iles: %1.2f (%1.2f, %1.2f)\n', ...
+  motionheuristic.belief_bscv_sort(pctiles(2)),motionheuristic.belief_bscv_sort(pctiles(1)),motionheuristic.belief_bscv_sort(pctiles(3)));
+fprintf('r MOTIONHEURISTIC DESIRE 50 (2.5, 97.5) %%iles %1.2f (%1.2f, %1.2f)\n', ...
+  motionheuristic.desire_bscv_sort(pctiles(2)),motionheuristic.desire_bscv_sort(pctiles(1)),motionheuristic.desire_bscv_sort(pctiles(3)));
+fprintf('r MOTIONHEURISTIC BELIEF GROUP 50 (2.5, 97.5) %%iles %1.2f (%1.2f, %1.2f)\n', ...
+  motionheuristic.belief_group_bscv_sort(pctiles(2)),motionheuristic.belief_group_bscv_sort(pctiles(1)),motionheuristic.belief_group_bscv_sort(pctiles(3)));
+fprintf('r MOTIONHEURISTIC DESIRE GROUP 50 (2.5, 97.5) %%iles %1.2f (%1.3f, %1.2f)\n', ...
+  motionheuristic.desire_group_bscv_sort(pctiles(2)),motionheuristic.desire_group_bscv_sort(pctiles(1)),motionheuristic.desire_group_bscv_sort(pctiles(3)));
 
 
-fprintf('P(R_BTOM < R_TRUEBELIEF)-------------------------------------\n');
+fprintf('P(R_BTOM <= R_TRUEBELIEF) [Belief,Desire,BeliefGroup,DesireGroup]\n');
 [mean(btom.belief_bscv <= truebelief.belief_bscv); ...
  mean(btom.desire_bscv <= truebelief.desire_bscv); ...
  mean(btom.belief_group_bscv <= truebelief.belief_group_bscv); ...
  mean(btom.desire_group_bscv <= truebelief.desire_group_bscv)]'
 
 
-fprintf('P(R_BTOM < R_NOCOST)-----------------------------------------\n');
+fprintf('P(R_BTOM <= R_NOCOST) [Belief,Desire,BeliefGroup,DesireGroup]\n');
 [mean(btom.belief_bscv <= nocost.belief_bscv); ...
  mean(btom.desire_bscv <= nocost.desire_bscv); ...
  mean(btom.belief_group_bscv <= nocost.belief_group_bscv); ...
  mean(btom.desire_group_bscv <= nocost.desire_group_bscv)]'
 
 
-fprintf('P(R_BTOM < R_MOTIONHEURISTIC)--------------------------------\n');
+fprintf('P(R_BTOM <= R_MOTIONHEURISTIC) [Belief,Desire,BeliefGroup,DesireGroup]\n');
 [mean(btom.belief_bscv <= motionheuristic.belief_bscv); ...
  mean(btom.desire_bscv <= motionheuristic.desire_bscv); ...
  mean(btom.belief_group_bscv <= motionheuristic.belief_group_bscv); ...
