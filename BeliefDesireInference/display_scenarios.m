@@ -45,7 +45,12 @@ for gi=1:n_cond_groups
   for ci=1:n_conds
     nc = cond_groups{gi}(ci);
   
-    disp_path_ind = scenario{nc}.path;
+    if nc<=54 % complete paths
+      % remove special "finished" state at end of path
+      disp_path_ind = scenario{nc}.path(1:(end-1));
+    else
+      disp_path_ind = scenario{nc}.path;
+    end
     disp_path_sub = ind2subv(scenario{nc}.world{1}.graph_sz',disp_path_ind)';
     hold off;
     

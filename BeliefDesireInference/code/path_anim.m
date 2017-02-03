@@ -175,7 +175,7 @@ if ~isfield(params,'special_delay')
 end
 
 if ~isfield(params,'isovist')
-  params.display_isovist = false;
+  params.isovist = false;
 end
 
 if ~isfield(params,'view_opt')
@@ -266,9 +266,9 @@ while p<=path_length
       
       waitforbuttonpress;
       
-    elseif animate
-      if speed>0
-        pause(1/speed);
+    elseif params.animate
+      if params.speed>0
+        pause(1/params.speed);
       end
       
     end
@@ -333,18 +333,18 @@ for gi=1:n_goal
         'FontSize',params.goal_sz{gi},'FontWeight','bold','Color',params.goal_color{gi}, ...
         'horizontalalignment','center','parent',f_axis);
       
-    elseif goal_type(gi) == 2 % marker
+    elseif params.goal_type(gi) == 2 % marker
       depth = depth+1;
       plot3(f_axis,env.goal_pose{gi}(1)+params.goal_x_offset, ...
         env.goal_pose{gi}(2)+params.goal_y_offset,params.goal_text{gi},depth, ...
         'MarkerSize',params.goal_sz{gi},'Color',params.goal_color{gi}, ...
         'MarkerFaceColor',params.goal_color{gi});
       
-    elseif goal_type(gi) == 3 % image
+    elseif params.goal_type(gi) == 3 % image
       depth=depth+1;
       draw_entity(f_axis,params.goal_img{gi},env.goal_pose{gi},params.goal_sz{gi},depth);
 
-    end % if goal_type(gi) == ?
+    end % if params.goal_type(gi) == ?
     
   end % if ~isempty(env.goal_pose{gi})
 
@@ -507,12 +507,12 @@ elseif params.agent_type == 3 % image
     % HACK: show agent eating
     % CB: eventually, pass in observations of EAT actions
     depth=depth+1;
-    draw_entity(f_axis,agent_img{2},path(:,frame),params.agent_sz,depth);
+    draw_entity(f_axis,params.agent_img{2},path(:,frame),params.agent_sz,depth);
     
   else
     % don't show agent eating
     depth=depth+1;
-    draw_entity(f_axis,agent_img{1},path(:,frame),params.agent_sz,depth);
+    draw_entity(f_axis,params.agent_img{1},path(:,frame),params.agent_sz,depth);
 
   end
 
@@ -537,20 +537,20 @@ end
 
 
 % display isovist
-if params.display_isovist
+if params.isovist
   world = [];
   world.graph_sz = env.graph_sz;
-  world.obst_pose = obst_pose;
-  world.obst_sz = obst_sz;
-  isopoly = isovist1(world,path{1}(:,frame));
-  isopoly{1} = bsxfun(@minus,isopoly{1},[box_offset box_offset]);
+  world.obst_pose = env.obst_pose;
+  world.obst_sz = env.obst_sz;
+  isopoly = isovist(world,path(:,frame));
+  isopoly{1} = bsxfun(@minus,isopoly{1},[params.box_offset params.box_offset]);
 
   % polygon of outer boundary (specified by env.graph_sz) in cw order
   graph_poly = zeros(4,2);
-  graph_poly(1,:) = [box_offset box_offset];
-  graph_poly(2,:) = [box_offset box_offset]+[0.0 env.graph_sz(2)];
-  graph_poly(3,:) = [box_offset box_offset]+env.graph_sz';
-  graph_poly(4,:) = [box_offset box_offset]+[env.graph_sz(1) 0.0];
+  graph_poly(1,:) = [params.box_offset params.box_offset];
+  graph_poly(2,:) = [params.box_offset params.box_offset]+[0.0 env.graph_sz(2)];
+  graph_poly(3,:) = [params.box_offset params.box_offset]+env.graph_sz';
+  graph_poly(4,:) = [params.box_offset params.box_offset]+[env.graph_sz(1) 0.0];
   
   % fix numerical issues!
   num = 1000;

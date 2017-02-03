@@ -1,5 +1,5 @@
-function r = fc(x,y)
-% r = fc(x,y)
+function r = fcorr(x,y)
+% r = fcorr(x,y)
 % fast Pearson correlation function
 %
 % x is P x N, y is P x M
