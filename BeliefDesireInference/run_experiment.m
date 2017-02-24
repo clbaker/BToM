@@ -1,4 +1,4 @@
-%% run_expt.m
+%% run_experiment.m
 %
 % Synopsis:
 %   -show familiarization stimuli
