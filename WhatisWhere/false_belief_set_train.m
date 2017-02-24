@@ -1,4 +1,4 @@
-function dist = false_belief_set_training()
+function dist = false_belief_set_train()
 	% Build space of possible prior the acting agent could have during training.
 	%
 	% It is similar to false_belief_set but only considers cases where all carts are open.

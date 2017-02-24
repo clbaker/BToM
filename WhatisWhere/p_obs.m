@@ -10,5 +10,5 @@ function p = p_obs(o,l,c,pomdp)
 	% l[vector]		vector of locations the agent has been in.
 	% c[integer]	number of possible worlds.
 	% pomdp[struct]	POMDP structure
-	p=prod(arrayfun(@(c,l,o,cs) pomdp.O(1,append(c,l,cs),o),ones(1,length(l))*c,l,o,ones(1,length(l))*pomdp.cs));
+	p=prod(pomdp.O(sub2indv(size(pomdp.O),[o; l; repmat(c,1,length(o))])));
 end
