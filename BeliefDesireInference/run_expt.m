@@ -1,4 +1,4 @@
-%% expt_interface.m
+%% run_expt.m
 %
 % Synopsis:
 %   -show familiarization stimuli
