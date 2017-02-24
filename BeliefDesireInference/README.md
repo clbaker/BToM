@@ -10,7 +10,7 @@ data/human_data.mat
 
 ## EXPERIMENT & STIMULI
 
-To run the experiment, you need the Visilibity package (http://www.visilibity.org). Compile the source code and put it in the code/visilibity/ directory. In Matlab, enter:
+To run the experiment, you need the Visilibity package (http://www.visilibity.org). Compile the source code and put it in the code/visilibity/ directory. In Matlab, enter:  
 &gt;&gt; run_experiment
 
 All stimulus scenarios are stored in: stimuli.mat. They can be visualized in Matlab using:  
