@@ -38,3 +38,11 @@ data/motionheuristic_bscv.mat
 
 ## ANALYSIS
 
+In Matlab:  
+bscv_analysis.m  
+->
+btom_bscv.mat
+truebelief_bscv.mat
+nocost_bscv.mat
+
+correlation_analysis.m
