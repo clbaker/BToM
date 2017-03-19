@@ -30,6 +30,11 @@ Data/NoCost/discount0.999900-cost0.0/results/results.mat
 ->  
 TrueBelief/discount0.999900-cost1.0/results/results.mat  
 
+In R:  
+&gt; run_motionheuristic  
+->  
+data/motionheuristic_results_complete.mat  
+data/motionheuristic_bscv.mat
 
 ## ANALYSIS
 
