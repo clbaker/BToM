@@ -4,9 +4,9 @@
 
 ## DATA
 
-See:
-Data/carts.csv
-Data/carts-mean.csv
+See:  
+Data/carts.csv  
+Data/carts-mean.csv  
 
 ## EXPERIMENT & STIMULI
 
