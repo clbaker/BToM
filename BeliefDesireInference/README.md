@@ -1,5 +1,7 @@
 # BToM: Bayesian Theory of Mind
 
+# Belief-Desire Inference
+
 ## DATA
 
 In Matlab:  
