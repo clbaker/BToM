@@ -57,7 +57,7 @@ btom_bscv.mat
 truebelief_bscv.mat  
 nocost_bscv.mat  
 
-&gt;&gt; correlation_analysis.m
+&gt;&gt; correlation_analysis
 
 
 
