@@ -117,5 +117,5 @@ t.test(bootres)$conf.int # Use only to look at 95% CI
 bootressort<-sort(bootres)
 bootressort[round(c(.025*samples,.5*samples,.975*samples))]
 
-writeMat("Data/MotionHeuristic/results.mat",results=worldInf.norm)
+writeMat("Data/MotionHeuristic/results.mat",results=t(worldInf.norm))
 writeMat("Data/MotionHeuristic/results_bscv.mat",r_bscv=bootres)

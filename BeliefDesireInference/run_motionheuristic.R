@@ -1,4 +1,4 @@
-# motionheuristic.R
+# run_motionheuristic.R
 
 # Data Description --------------------------------------------------------
 
@@ -43,7 +43,7 @@ library(bootstrap)
 library(R.matlab)
 
 # Load Data
-setwd("~/Research/src/belief_inf2.0/branches/release")
+setwd("~/Research/src/BToM/BeliefDesireInference")
 RawData<-read.csv("data/motionheuristic/RawData.csv",header=T)
 Paths<-read.csv("data/motionheuristic/Paths.csv",header=T)
 # Paths$Path is the pathnumber that is referenced in the RawData file; 1-15 are complete and 16-21 are incomplete.
