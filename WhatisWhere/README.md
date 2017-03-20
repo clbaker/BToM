@@ -33,11 +33,12 @@ In R:
 data/motionheuristic_results_complete.mat  
 data/motionheuristic_bscv.mat
 
-Currently, the POMDP files are all saved in the repository, but to regenerate or modify them, use:  
+Currently, the POMDPX files are all saved in the repository, but to regenerate or modify them, use:  
 &gt;&gt; setup_btom  
 &gt;&gt; setup_truebelief  
 &gt;&gt; setup_nocost  
 
+The POLICYX files are also saved in the repository. To generate these, you must solve each POMDP using APPL, available at: http://bigbird.comp.nus.edu.sg/pmwiki/farm/appl/index.php?n=Main.Download
 
 ## ANALYSIS
 
