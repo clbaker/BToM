@@ -33,6 +33,12 @@ In R:
 data/motionheuristic_results_complete.mat  
 data/motionheuristic_bscv.mat
 
+Currently, the POMDP files are all saved in the repository, but to regenerate or modify them, use:  
+&gt;&gt; setup_btom  
+&gt;&gt; setup_truebelief  
+&gt;&gt; setup_nocost  
+
+
 ## ANALYSIS
 
 In Matlab:  
