@@ -44,5 +44,3 @@ In Matlab:
 Data/BToM/discount0.999900-cost1.0/results/results_bscv.mat  
 Data/TrueBelief/discount0.999900-cost1.0/results/results_bscv.mat  
 Data/NoCost/discount0.999900-cost0.0/results/results_bscv.mat  
-
-&gt;&gt; correlation_analysis  
