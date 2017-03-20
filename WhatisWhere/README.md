@@ -8,9 +8,6 @@ See:
 Data/carts.csv  
 Data/carts-mean.csv  
 
-## EXPERIMENT & STIMULI
-
-
 
 ## MODEL PREDICTIONS
 
